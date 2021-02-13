@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//POST - GET - DELETE
 Route::get('/', function () {
     return view('home.home');
 });
+
+Route::resource('post', 'PostController');
