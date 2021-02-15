@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 //POST - GET - DELETE
 Route::get('/', function () {
     return view('home.home');
-});
+})->name('home');
 
 Route::resource('post', 'PostController');
