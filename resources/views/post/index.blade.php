@@ -7,7 +7,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="btn btn-sm btn-primary" href="{{ route('post.create')}}"> Nuevo Post</a></li>
                 </ul>
-
+                <form action="{{ route('post.search') }}" method="POST" class="d-flex">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <input type="text" class="form-control me-2" name="search" placeholder="Buscar">
+                        <span class="input-group-btn">
+                            <button class="btn btn-outline-info" type="submit"><span class="fas fa-search" aria-hidden="true"></span>Buscar...</button>
+                        </span>
+                    </div>
+                  </form>
             </div>
         </div>
     </nav>

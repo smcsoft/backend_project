@@ -19,6 +19,17 @@ class PostController extends Controller
         return view("post.index", $data);
     }
 
+    public function search(Request $request)
+    {
+
+        $data = $request->Input('search');
+        $query = Post::select()
+            ->where('title','like',"%$data%")
+            ->orwhere('author', 'like', "%$data%")
+            ->get();
+        return view("post.index")->with(["posts" => $query]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
