@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Imagen:</label>
-            <input type="text" class="form-control" id="image" name="image">
+            <input type="file" class="form-control" id="image" name="image">
         </div>
         <div class="mb-3">
             <label for="author" class="form-label">Autor:</label>

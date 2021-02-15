@@ -33,7 +33,7 @@
                         <td> {{ $post->summary }}</td>
                         <td> {{ $post->description }}</td>
                         <td> {{ $post->author }}</td>
-                        <td> {{ $post->image }}</td>
+                        <td scope="row"><img src="{{ asset('storage') . '/' . $post->image }}" alt="" width="100"></td>
                         <td>
                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Editar</a>
                             <form action="{{ route('post.destroy', $post->id) }}" method="post">

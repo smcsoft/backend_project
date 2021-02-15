@@ -1,7 +1,7 @@
 @extends('base')
 @section('title') Modificar Post @endsection
 @section('content')
-    <form action="{{ route('post.update', $post->id) }}" method="post">
+    <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field("PATCH")}}
         <div class="mb-3">
@@ -19,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Imagen:</label>
-            <input type="text" class="form-control" id="image" name="image" value="{{ $post->image }}">
+            <input type="file" class="form-control" id="image" name="image" value="{{ $post->image }}">
         </div>
         <div class="mb-3">
             <label for="author" class="form-label">Autor:</label>

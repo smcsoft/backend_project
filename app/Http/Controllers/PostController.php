@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -37,6 +38,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
+        if($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('uploads','public');
+        }
         Post::insert($data);
         return redirect()->route("post.index");
     }
@@ -75,6 +79,13 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except('_token', '_method');
+        if($request->hasFile('image'))
+        {
+            $post = Post::findOrFail($id);
+            Storage::delete("public/$post->image");
+            $data['image'] = $request->file('image')->store('uploads','public');
+
+        }
         Post::where('id','=', $id)->update($data);
         return redirect()->route("post.index");
 
