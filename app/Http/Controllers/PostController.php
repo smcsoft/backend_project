@@ -36,7 +36,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        Post::insert($data);
+        return redirect()->route("post.index");
     }
 
     /**
