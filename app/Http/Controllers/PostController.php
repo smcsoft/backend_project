@@ -81,8 +81,9 @@ class PostController extends Controller
      * @param  \App\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(post $post)
+    public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect()->route("post.index");
     }
 }
