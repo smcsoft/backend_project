@@ -19,8 +19,13 @@ Route::get('/', function () {
     return view('home.home');
 })->name('home');
 
+
 Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'post'], function() {
     Route::post('search', 'PostController@search')->name('post.search');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

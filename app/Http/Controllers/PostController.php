@@ -24,8 +24,10 @@ class PostController extends Controller
 
         $data = $request->Input('search');
         $query = Post::select()
+            ->join('categories as cat', 'posts.category_id', '=', 'cat.id')
             ->where('title','like',"%$data%")
             ->orwhere('author', 'like', "%$data%")
+            ->orwhere('cat.name', 'like', "%$data%")
             ->get();
         return view("post.index")->with(["posts" => $query]);
     }
@@ -37,7 +39,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+        return view('post.create')->with(["categories" => $categories]);
     }
 
     /**

@@ -25,6 +25,7 @@
             <tr>
                 <th>{{ 'Id' }}</th>
                 <th>{{ 'Título' }}</th>
+                <th>{{ 'Categoría' }}</th>
                 <th>{{ 'Resumen' }}</th>
                 <th>{{ 'Descripción' }}</th>
                 <th>{{ 'Autores' }}</th>
@@ -38,6 +39,7 @@
                     <tr>
                         <td scope="row"> {{ $post->id }} </td>
                         <td> {{ $post->title }}</td>
+                        <td> {{ $post->category_id . '-' .$post->category->name}}</td>
                         <td> {{ $post->summary }}</td>
                         <td> {{ $post->description }}</td>
                         <td> {{ $post->author }}</td>
